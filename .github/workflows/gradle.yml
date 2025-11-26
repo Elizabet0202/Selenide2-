@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java CI – Task 1 and Task 2
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  task1-replan-delivery:
+    name: Task 1 – Replan Delivery
     runs-on: ubuntu-latest
 
     steps:
@@ -29,11 +30,43 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Run the application
+      - name: Run SUT (Task 1)
         run: |
           java -jar ./artifacts/app-replan-delivery.jar &
           sleep 5
 
-      - name: Run tests
-        run: xvfb-run ./gradlew test -Dselenide.headless=true
+      - name: Run CardDeliveryTest
+        run: xvfb-run ./gradlew test --tests ru.netology.test.CardDeliveryTest -Dselenide.headless=true
+
+  task2-ibank:
+    name: Task 2 – IBank Auth
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+          cache: gradle
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Install ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Run SUT (Task 2 – iBank, test profile)
+        run: |
+          java -jar ./artifacts/app-ibank.jar -P:profile=test &
+          sleep 5
+
+      - name: Run AuthTest
+        run: xvfb-run ./gradlew test --tests ru.netology.test.AuthTest -Dselenide.headless=true
+
 
