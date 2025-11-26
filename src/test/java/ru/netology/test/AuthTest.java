@@ -31,8 +31,9 @@ public class AuthTest {
         $("[data-test-id=action-login]").click();
 
         // здесь подставь селектор/текст того, что видно на успешной странице
-        $("[data-test-id=success-notification]")
-                .shouldBe(Condition.visible, Duration.ofSeconds(10));
+        $("h2")
+            .shouldBe(Condition.visible, Duration.ofSeconds(10))
+            .shouldHave(Condition.text("Личный кабинет"));
     }
 
     // 2. Ошибка для заблокированного пользователя
