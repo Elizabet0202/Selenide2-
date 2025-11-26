@@ -17,12 +17,21 @@ public class CardDeliveryTest {
 
     @BeforeAll
     static void setUpAll() {
-        Configuration.holdBrowserOpen = false;
+        //Configuration.holdBrowserOpen = false;
+        Configuration.headless = Boolean.getBoolean("selenide.headless");
+        System.setProperty("chromeoptions.args",
+                "--remote-allow-origins=*;" +
+                        "--no-sandbox;" +
+                        "--disable-dev-shm-usage;" +
+                        "--disable-gpu;" +
+                        "--disable-extensions;" +
+                        "--disable-popup-blocking;" +
+                        "--disable-notifications;");
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @BeforeEach
-    void openPage() {
+    void setUp() {
         open("http://localhost:9999");
     }
 
