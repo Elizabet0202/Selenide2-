@@ -23,7 +23,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run the application
-        run: java -jar ./artifacts/app-card-delivery.jar &
+        run: java -jar ./artifacts/app-replan-delivery.jar &
 
       - name: Build with Gradle
         run: ./gradlew test --info -Dselenide.headless=true
