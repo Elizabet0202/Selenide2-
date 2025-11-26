@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class AuthTest {
 
     @BeforeEach
-    void openPage() {
+    void setUp() {
         open("http://localhost:9999");
     }
 
