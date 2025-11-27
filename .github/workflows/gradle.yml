@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-   ibank-auth:
-    name: IBank Auth
+   delivery-test:
+    name: replan-deliveryTest 
     runs-on: ubuntu-latest
 
     steps:
