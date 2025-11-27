@@ -32,9 +32,9 @@ jobs:
 
       - name: Run SUT
         run: |
-          java -jar ./artifacts/app-ibank.jar -P:profile=test &
+          java -jar ./artifacts/app-replan-delivery.jar -P:profile=test &
           sleep 5
 
-      - name: Run AuthTest
-        run: xvfb-run ./gradlew test --tests ru.netology.test.AuthTest -Dselenide.headless=true
+      - name: Run CardDeliveryTest
+        run: xvfb-run ./gradlew test --tests ru.netology.test.CardDeliveryTest -Dselenide.headless=true
 
