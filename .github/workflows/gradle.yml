@@ -29,4 +29,4 @@ jobs:
           java -jar ./artifacts/app-replan-delivery.jar -P:profile=test &
 
       - name: Run CardDeliveryTest
-        run: ./gradlew test --tests ru.netology.test.AuthTest -Dselenide.headless=true
+        run: ./gradlew test --tests ru.netology.test.CardDeliveryTest -Dselenide.headless=true
