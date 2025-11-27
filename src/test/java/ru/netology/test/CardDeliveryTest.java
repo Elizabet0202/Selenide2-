@@ -15,7 +15,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
 
-
+ @BeforeAll
+    static void setUpAll() {
+        Configuration.browser = "chrome";     
+        Configuration.headless = true;       
+    }
     @BeforeEach
     void setUp() {
         open("http://localhost:9999");
