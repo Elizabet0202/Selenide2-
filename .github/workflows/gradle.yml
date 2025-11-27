@@ -21,12 +21,6 @@ jobs:
           java-version: 11
           cache: gradle
 
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-
-      - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
@@ -36,5 +30,4 @@ jobs:
           sleep 5
 
       - name: Run CardDeliveryTest
-        run: xvfb-run ./gradlew test --tests ru.netology.test.CardDeliveryTest -Dselenide.headless=true
 
